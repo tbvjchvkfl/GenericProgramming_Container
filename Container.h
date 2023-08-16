@@ -9,6 +9,8 @@
 #include <queue>
 #include <set>
 #include <unordered_set>
+#include <map>
+#include <bitset>
 #include <algorithm>
 void Array_Container()
 {
@@ -207,7 +209,122 @@ void Set_Container()
 
 }
 
+void Map_Container()
+{
+	std::map<std::string, std::string> myMap;
+
+	myMap.insert({ "+", "더하기연산자이면서 이항 연산자입니다." });
+	myMap.insert({ ">>", "비트 시프트 연산자입니다." });
+	myMap.insert({ "new", "동적 메모리 할당 연산자입니다. delete 주의하세요." });
+
+	std::cout << myMap["+"] << std::endl;
+	myMap["-"] = "빼기 연산자입니다.";
+
+	for (auto e : myMap)
+	{
+
+	}
+}
+
+void bit_set_Container()
+{
+	std::bitset<8> flag;
+
+	flag.set(1, true);
+	flag[2] = true;
+
+	std::cout << flag << std::endl;
+}
+
+
+
+void Practice()
+{
+	struct Student
+	{
+		int number;
+		int score;
+		std::string name;
+	};
+
+
+	std::map<int, Student> students
+	{
+		{ 1, {1,100, "Doggy"}},
+		{ 2, {2, 50, "Kitty"}},
+		{ 3, {3, 90, "Piggy"}},
+		{ 4, {4, 20, "Bunny"}}
+	};
+
+	students.insert(std::make_pair<int, Student>(5, { 5,80,"SeungMin" }));
+
+	for (auto student : students)
+	{
+		std::cout << student.second.number << " : " << student.second.name << ", " << student.second.score << std::endl;
+	}
+
+
+
+	std::multimap<int, int>mm;
+	mm.insert({ 1,40 });
+	mm.insert({ 2,30 });
+	mm.insert({ 1,50 });
+	
+
+
+	for (auto e : mm)
+	{
+		std::cout << e.first << " : " << e.second << std::endl;
+	}
+}
+
+
+
+// elipse keyword
+// 생략 기호
+// ' ... '
+void f(int x, ...) 
+{
+
+}
+
+// 만약 좌표를 사용하고 싶을 때
+void Pair_Container()
+{
+	// 여러개의 좌표 말고, 하나의 x,y 좌표만 사용할 때 pair라는 템플릿을 사용
+	// 즉, 2개의 타입만! 사용할 때.
+	std::pair<int, int> pt1;
+	pt1.first = 1;
+	pt1.second = 2;
+
+	pt1 = { 2, 3 };
+
+	pt1 = std::make_pair<int, int>(3, 3);
+
+
+	// 여러개의 타입을 특수화시킬 수 있음.
+	std::tuple<int, int, std::string> st1;
+	
+	st1 = { 1, 100, "Kitty" };
+	st1 = std::make_tuple<int, int, std::string>(2, 50, "Doggy");
+
+	
+	// tuple에서 0번째 원소를 가져오는 코드
+	// 으아... 너무 어렵다...ㅠㅠ
+	std::cout << std::get<0>(st1) << std::endl;
+
+
+	for (int i = 0; i < std::tuple_size<std::tuple<int, int, std::string>>::value; i++)
+	{
+
+	}
+}
+
 void Container()
 {
-	Set_Container();
+	//Set_Container();
+	
+	bit_set_Container();
 }
+
+

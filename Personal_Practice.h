@@ -27,7 +27,20 @@ public:
 
 	void RemoveStudent(std::vector<Student>& v)
 	{
-		
+		Student students;
+
+		std::cout << "제거할 학생의 번호를 입력하세요" << std::endl;
+		int input{};
+		if (std::cin >> input)
+		{
+			for (std::vector<Student>::iterator itr = v.begin(); itr != v.end(); itr++)
+			{
+				if (itr->mNumber == input)
+				{
+					v.erase(itr);
+				}
+			}
+		}
 	}
 
 	void PrintStudents(std::vector<Student>& v)
@@ -45,7 +58,18 @@ public:
 		}
 	}
 
+	void PrintAverage(const std::vector<Student>& v)
+	{
+		int total{};
+		for (const Student& e : v)
+		{
+			total += e.mScore;
+		}
+		total / v.size();
+	}
+
 	
+
 };
 
 void Student_Program()

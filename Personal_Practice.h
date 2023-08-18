@@ -61,26 +61,55 @@ public:
 	void PrintAverage(const std::vector<Student>& v)
 	{
 		int total{};
-		for (const Student& e : v)
+		int Average{};
+		if (v.size() != 0)
+		{
+			for (const Student& e : v)
+			{
+				total += e.mScore;
+			}
+			Average = total / v.size();
+
+			std::cout<< "총점 : " << total<< "평균 : " << Average << std::endl;
+		}
+		else
+		{
+			std::cout << "학생이 없어 평균 값을 알 수 없습니다. 학생을 추가하세요" << std::endl;
+			return;
+		}
+	}
+
+	void PrintAverage_Member(std::vector<Student>& v)
+	{
+		int total{};
+		int Average{};
+		for (Student& e : v)
 		{
 			total += e.mScore;
 		}
-		total / v.size();
-	}
+		Average = total / v.size();
 
-	
+		for (Student& e : v)
+		{
+			if (e.mScore >= Average)
+			{
+				std::cout << "---------------------------------------" << std::endl;
+				std::cout << " [ " << e.mNumber << " ] " << e.mName << ", " << e.mScore << std::endl;
+				std::cout << "---------------------------------------" << std::endl;
+			}
+		}
+	}
 
 };
 
 void Student_Program()
 {
 	Student students;
-
+	std::vector<Student> vstudent;
 	bool IsQuit{ false };
 
 	while (!IsQuit)
 	{
-		std::vector<Student> vstudent;
 		std::cout << "1. 학생 추가" << std::endl;
 		std::cout << "2. 학생 제거(번호)" << std::endl;
 		std::cout << "3. 전체 학생 출력" << std::endl;
@@ -112,11 +141,13 @@ void Student_Program()
 		case 4:
 		{
 			// 전체 학생의 점수 평균값 출력
+			students.PrintAverage(vstudent);
 		}
 		break;
 		case 5:
 		{
 			// 평균 이상이 학생 목록 출력
+			students.PrintAverage_Member(vstudent);
 		}
 		break;
 		case 6:

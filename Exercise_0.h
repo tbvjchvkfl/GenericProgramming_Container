@@ -121,19 +121,18 @@ void Exercise_vector_ver()
 	// 4. 평균, 총점
 	// 5. 평균 이상의 학생 목록
 	// 6. 종료 
-
+	std::vector<Student> students_v
+	{
+		{1, "Kim", 80},
+		{ 2, "Lee", 20 },
+		{ 3, " Park", 40 },
+		{ 4, "Choi", 30 }
+	};
 	bool isQuit{ false };
 
 	while (!isQuit)
 	{
-		std::vector<Student> students_v
-		{
-			{1, "Kim", 80},
-			{ 2, "Lee", 20 },
-			{ 3, " Park", 40 },
-			{ 4, "Choi", 30 }
-		};
-
+		
 		std::cout << "1. 학생 추가" << std::endl;
 		std::cout << "2. 학생 제거(번호)" << std::endl;
 		std::cout << "3. 전체 학생 출력" << std::endl;
